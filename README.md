@@ -4,8 +4,8 @@
 AnyGrasp SDK & Grounded-Light-HQ-SAM for queried grasp detection & tracking.
 
 ## Requirements
-- Python 3.6/3.7/3.8/3.9/3.10
-- PyTorch 1.7.1 with CUDA 11.0
+- Python 3.8/3.9/3.10
+- PyTorch 1.7.1 with CUDA 11.0+
 - [MinkowskiEngine](https://github.com/NVIDIA/MinkowskiEngine) v0.5.4
 
 
@@ -44,6 +44,13 @@ git submodule update --init --recursive
 cd grounded-sam-osx && bash install.sh
 pip install opencv-python pycocotools matplotlib onnxruntime onnx ipykernel
 ```
+Download pretrained Light-HQSAM weight [here](https://huggingface.co/lkeab/hq-sam/resolve/main/sam_hq_vit_tiny.pth) and put it in ./Grounded-Segment-Anything/EfficientSAM/, then download the pretrained groundingdino weights:
+```
+cd Grounded-Segment-Anything
+
+# download the pretrained groundingdino-swin-tiny model
+wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+```
 
 ## License Registration
    
@@ -54,4 +61,6 @@ We usually reply in 2 work days. If you do not receive the reply in 2 days, **pl
 
 ## Demo Code
 Now you can run your code that uses AnyGrasp SDK. See [grasp_detection](grasp_detection) and [grasp_tracking](grasp_tracking) for details.
+
+1. Sampling
 
