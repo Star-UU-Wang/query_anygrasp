@@ -48,8 +48,6 @@ Then:
 python -m pip install -e segment_anything
 pip install --no-build-isolation -e GroundingDINO
 pip install --upgrade diffusers[torch]
-git submodule update --init --recursive
-cd grounded-sam-osx && bash install.sh
 pip install opencv-python pycocotools matplotlib onnxruntime onnx ipykernel
 ```
 Download pretrained Light-HQSAM weight [here](https://huggingface.co/lkeab/hq-sam/resolve/main/sam_hq_vit_tiny.pth) and put it in ./Grounded-Segment-Anything/EfficientSAM/, then download the pretrained groundingdino weights:
