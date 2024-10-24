@@ -100,5 +100,3 @@ Finally, you will get the gripper_pose.json.
 
 ## Demo
 You can run the code for example scene and the queried case - "bear" (under ./grasp_detection/out/1/).
-
-
