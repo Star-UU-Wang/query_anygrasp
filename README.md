@@ -23,6 +23,14 @@ AnyGrasp SDK & Grounded-Light-HQ-SAM for queried grasp detection & tracking.
     python setup.py install
 ```
 
+## License Registration
+
+After you apply for the SDK license from [Anygrasp](https://github.com/graspnet/anygrasp_sdk), put the license in ./grasp_detection/ and follow the [instruction](https://github.com/graspnet/anygrasp_sdk/blob/main/license_registration/README.md).
+
+## Model Weight
+
+After you get the [checkpoints](https://drive.google.com/file/d/1jNvqOOf_fR3SWkXuz8TAzcHH9x8gE8Et/view) of grasp_dectection, follow the [instruction](https://github.com/graspnet/anygrasp_sdk/tree/main/grasp_detection) and put model weights under ./grasp_detection/log/.
+
 ## Installation for Grounded-Light-HQSAM
 Please follow [Grounded-SAM's Installation](https://github.com/IDEA-Research/Grounded-Segment-Anything) to create an additional conda env called sam:
 ```
@@ -52,15 +60,45 @@ cd Grounded-Segment-Anything
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 ```
 
-## License Registration
-   
-Due to the IP issue, currently we can only release the SDK library file of AnyGrasp in a licensed manner. Please get the feature id of your machine and fill in the [form](https://forms.gle/XVV3Eip8njTYJEBo6) to apply for the license. See [license_registration/README.md](license_registration/README.md) for details. **If you are interested in code implementation, you can refer to our [baseline version of network](https://github.com/graspnet/graspnet-baseline), or a third-party implementation of our [GSNet](https://github.com/graspnet/graspness_unofficial).**
-
-We usually reply in 2 work days. If you do not receive the reply in 2 days, **please check the spam folder.**
-
-
-## Demo Code
-Now you can run your code that uses AnyGrasp SDK. See [grasp_detection](grasp_detection) and [grasp_tracking](grasp_tracking) for details.
+## Pipeline
+Now you can run the code that uses AnyGrasp SDK & Grounded-Light-HQ-SAM.
 
 1. Sampling
+```
+cd grasp_detection
+python sample_realsense.py
+# s - save
+# q - exit
+```
+Then you can find the image (RGB+depth) captured in the "out" folder named by timestamps.
+
+2. Query
+```
+cd Grounded-Segment-Anything/EfficientSAM
+python grounded_light_hqsam.py
+```
+Then you will get the grounded detection and segmentation results under ./grasp_detection/out/.
+
+3. Select
+```
+cd grasp_detection
+
+# for mask
+python select_mask_region.py
+
+# for bounding box
+python select_region.py
+
+```
+
+4. Grasp Pose Generation
+```
+cd grasp_detection
+sh demo_real_query.sh
+```
+Finally, you will get the gripper_pose.json.
+
+## Demo
+You can run the code for example scene and the queried case - "bear" (under ./grasp_detection/out/1/).
+
 
