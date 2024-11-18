@@ -63,6 +63,7 @@ Now you can run the code that uses AnyGrasp SDK & Grounded-Light-HQ-SAM.
 
 1. Sampling
 ```
+conda activate sam
 cd grasp_detection
 python sample_realsense.py
 # s - save
@@ -72,6 +73,7 @@ Then you can find the image (RGB+depth) captured in the "out" folder named by ti
 
 2. Query
 ```
+conda activate sam
 cd Grounded-Segment-Anything/EfficientSAM
 python grounded_light_hqsam.py
 ```
@@ -79,6 +81,7 @@ Then you will get the grounded detection and segmentation results under ./grasp_
 
 3. Select
 ```
+conda activate sam
 cd grasp_detection
 
 # for mask
@@ -91,6 +94,7 @@ python select_region.py
 
 4. Grasp Pose Generation
 ```
+conda activate anygrasp
 cd grasp_detection
 sh demo_real_query.sh
 ```
