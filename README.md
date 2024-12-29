@@ -41,14 +41,18 @@ export CUDA_HOME=/path/to/cuda-11.8/
 ```
 Then install torch:
 ```
+conda activate sam
 pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
 ```
 Then:
 ```
+cd Grounded-Segment-Anything
 python -m pip install -e segment_anything
 pip install --no-build-isolation -e GroundingDINO
 pip install --upgrade diffusers[torch]
 pip install opencv-python pycocotools matplotlib onnxruntime onnx ipykernel
+# verision modificastion
+pip install supervision=0.18.0
 ```
 Download pretrained Light-HQSAM weight [here](https://huggingface.co/lkeab/hq-sam/resolve/main/sam_hq_vit_tiny.pth) and put it in ./Grounded-Segment-Anything/EfficientSAM/, then download the pretrained groundingdino weights:
 ```
